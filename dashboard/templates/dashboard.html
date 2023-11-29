@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+
+<h1>Your listed items</h1>
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for item in items %}
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h2 class="my-0 fw-normal">{{ item.name }}</h2>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title pricing-card-title">{{ item.price }}</h4>
+          <a href="{% url 'item:edit' item_id=item.id %}" class="w-100 btn btn-lg btn-outline-primary">Edit</a>
+          <a href="{% url 'item:delete' item_id=item.id %}" class="w-100 btn btn-lg btn-outline-primary">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Ecommerce{% endblock title %}
+
+{% block content %}
+
+<div class="p-5 text-center bg-body-tertiary rounded-3">
+    
+    <h1>New Items!</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for item in items %}
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h2 class="my-0 fw-normal">{{ item.name }}</h2>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title pricing-card-title">{{ item.price }}</h4>
+              <a href="{% url 'detail' item.id %}" class="w-100 btn btn-lg btn-outline-primary">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    
+  </div>
+
+
+
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    
+    <h1>Categories</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for category in categories %}
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h2 class="my-0 fw-normal">{{ category.name }}</h2>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title pricing-card-title">{{ category.items.count }} items</h4>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary">Checkout!</button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    
+  </div>
+
+{% endblock content %}
